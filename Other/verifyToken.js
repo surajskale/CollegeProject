@@ -1,25 +1,25 @@
 const jwt = require('jsonwebtoken');
 const verifyToken = (req, res, next) => {
     const authToken = req.session.token;
+    if(authToken == undefined){
+        return res.render('loginPage', {Title: 'Login', role:'user'}); // This doesn't display 'You are logged out message'.
+    }
     if(authToken != undefined) {
         try{
             const verified_user = jwt.verify(authToken, process.env.JWT_SECRET_KEY);
             if(verified_user){
-                req.user = verified_user;
-                console.log('This is veified use ' + req.user);
+                req.id = verified_user.id;
                 next();
             }
             else{
-                return res.redirect('/user/login');
+                req.id = 'loggedout';
             }
         }catch(err){
-            req.jwt_expired = true;
-            return res.redirect('/user/login');
+            req.id = 'loggedout';
         }
     }
     else{
-        req.jwt_expired = true;
-        return res.redirect('/user/login');
+        req.id = 'loggedout';
     }
     next();
 }   
