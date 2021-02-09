@@ -1,0 +1,31 @@
+    <title><%- Title %></title>
+    <br><br>
+    <div class="container ">
+        <h1>Register</h1>
+        <% if(typeof message != 'undefined') { %>
+            <h4 style="color: red"> <%= message %></h4>
+        <% } %> 
+        <form action='/<%- role %>/register' method="POST" class="row g-3">
+            <div class="col-6">
+                <label for="inputName" class="form-label">Name</label>
+                <input type="text" class="form-control" id="inputName" name="inputName">
+            </div>
+            <br>
+            <div class="col-6">
+                <label for="inputEmail" class="form-label">Email</label>
+                <input type="text" class="form-control" id="inputEmail" name="inputEmail">
+            </div>
+            <br>
+            <div class="col-6">
+                <label for="userPassword" class="form-label">Password</label>
+                <input type="text" class="form-control" id="userPassword" name="inputPassword">
+            </div>
+            
+            <div class="col-12">
+                <button type="submit" class="btn btn-primary">Register</button>
+            </div>
+        </form>
+        <p class="lead mt-4">
+            Already registered? <a href='/<%- role %>/login'>Login</a>
+        </p>
+    </div>

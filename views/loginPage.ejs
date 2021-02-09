@@ -1,0 +1,30 @@
+<title><%- Title %></title>
+    <br><br>
+  <div class="container">
+  <h1>Login</h1>
+  <% if(typeof message != 'undefined') { %>
+    <h4 style="color: red"> <%= message %></h4>
+  <% } %> 
+  <form action='/<%- role %>/login' method="POST" class="row g-3">
+      <div class="col-6">
+        <label for="inputEmail" class="form-label">Email</label>
+        <input type="text" class="form-control" id="inputEmail" name="inputEmail" >
+      </div>
+      <br>
+      <div class="col-6">
+        <label for="userPassword" class="form-label">Password</label>
+        <input type="text" class="form-control" id="userPassword" name="inputPassword" >
+      </div>
+      
+      <div class="col-12">
+        <button type="submit" class="btn btn-secondary">Login</button>
+      </div>
+    </form>
+    <p class="lead mt-4">
+      No Account? <a href='/<%- role %>/register'>Register</a>
+    </p>
+    <% if(typeof isLogged != 'undefined') { %> 
+      <h5>You are logged in.</h5>
+      <a href= '/user/getAppointment'>Get Appointment</a>
+    <% } %> 
+  </div>
