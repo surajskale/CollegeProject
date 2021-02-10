@@ -8,7 +8,7 @@ const bcrypt = require('bcryptjs');
 const User = mongoose.model('User');
 const {loginValidation, registerValidation} = require('../Other/validationOfData');
 const {verifyToken} = require('../Other/verifyToken');
-const registerController = require('../controllers/registerController');
+const registerController = require('../controllers/registerUserController');
 const loginController = require('../controllers/loginUserController');
 
 router.use(cookieSession({secret: process.env.COOKIE_SECRET_KEY} ));
