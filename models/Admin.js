@@ -8,6 +8,7 @@ const adminSchema = mongoose.Schema({
     email: {
         type: 'String',
         required: true,
+        // alias: 'name.email'
     },
     password: {
         type: 'String',
@@ -30,7 +31,18 @@ const adminSchema = mongoose.Schema({
             type: 'String',
             required: true
         }
+    },
+    start_time: {
+        type: 'number',
+        required: true
+    },
+    closing_time: {
+        type: 'number',
+        required: true
+    },
+    interval_time: {
+        type: 'number',
+        required: true
     }
-
 })
 module.exports = mongoose.model('Admin', adminSchema);

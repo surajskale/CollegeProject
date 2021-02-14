@@ -9,6 +9,14 @@ const appointmentSchema = mongoose.Schema({
         type: 'String',
         required: true,
     },
+    start_time: {
+        type: 'number', 
+        required: true
+    },
+    end_time: {
+        type: 'number', 
+        required: true
+    }
 });
 
-module.exports = mongoose.model('Appointments', appointmentSchema)
+module.exports = mongoose.model('Appointment', appointmentSchema)

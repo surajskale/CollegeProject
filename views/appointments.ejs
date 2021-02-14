@@ -1,3 +1,28 @@
+<title> <%- Title %> </title> 
+<div class="container">
+<% if(typeof role != 'undefined') {%> 
+    <% if(role === 'user'){ %> 
+        <%-  used_intervals_set %> <br>
+        <%-  start_time %> <br>
+        <%=  closing_time %> <br>
+        <%=  interval_time %> <br>
+        <% var i=0; %> 
+        <div class="row g-3">
+            <% for(i=start_time; i<=closing_time; i+=interval_time){ %> 
+                <div class="card" style="width: 18rem;">
+                    <div class="card-body">
+                        <p>Time Slot</p> 
+                        <% if(used_intervals_set.has(parseInt(i))) {%>
+                        <p>Occupied</p>
+                        <% } %> 
+                        <a href="/user/getAppointment/<%- admin_id %>/<%- Math.floor(i/60) %>/<%- i%60 %>  "><%-  Math.floor(i/60) %> : <%- i%60 %>  </a>
+                    </div>
+                </div>
+            <% }; %> 
+        </div>
+    <% } %> 
+<% } %> 
+</div>
 <div class="row g-3">
     <ul class="list-group">
         <% if(typeof mes != 'undefined') {%>

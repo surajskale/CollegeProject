@@ -5,22 +5,61 @@
         <% if(typeof message != 'undefined') { %>
             <h4 style="color: red"> <%= message %></h4>
         <% } %> 
+
         <form action='/<%- role %>/register' method="POST" class="row g-3">
+            
+
             <div class="col-6">
                 <label for="inputName" class="form-label">Name</label>
-                <input type="text" class="form-control" id="inputName" name="inputName">
+                <input required type="text" class="form-control" id="inputName" name="inputName">
             </div>
-            <br>
             <div class="col-6">
                 <label for="inputEmail" class="form-label">Email</label>
-                <input type="text" class="form-control" id="inputEmail" name="inputEmail">
+                <input required type="text" class="form-control" id="inputEmail" name="inputEmail">
             </div>
-            <br>
             <div class="col-6">
                 <label for="userPassword" class="form-label">Password</label>
-                <input type="text" class="form-control" id="userPassword" name="inputPassword">
+                <input required type="text" class="form-control" id="userPassword" name="inputPassword">
             </div>
-            
+            <br><br>
+            <% if( role  == "admin" ) { %>
+                <div class="col-6">
+                    <label for="inputState" class="form-label">State</label>
+                    <input required type="text" class="form-control" id="inputState" name="inputState">
+                </div>
+                <br>
+                <div class="col-6">
+                    <label for="inputDistrict" class="form-label">District</label>
+                    <input required type="text" class="form-control" id="inputDistrict" name="inputDistrict">
+                </div>
+                <br>
+                <div class="col-6">
+                    <label for="inputTaluka" class="form-label">Taluka</label>
+                    <input required type="text" class="form-control" id="inputTaluka" name="inputTaluka">
+                </div>
+                <br>
+                <div class="col-6">
+                    <label for="inputLandmark" class="form-label">Landmark</label>
+                    <input required type="text" class="form-control" id="inputLandmark" name="inputLandmark">
+                </div>
+                <br>
+                <div class="col-6">
+                    <label for="inputStartTime" class="form-label">Start Time</label>
+                    <input required type="time" class="form-control" id="inputStartTime" name="inputStartTime">
+                </div>
+                <br>
+                <div class="col-6">
+                    <label for="inputClosingTime" class="form-label">Closing Time</label>
+                    <input required type="time" class="form-control" id="inputClosingTime" name="inputClosingTime">
+                </div>
+                <br>
+                <div class="col-6">
+                    <label for="inputIntervalTime" class="form-label">Intervals </label>
+                    <input required type="number" class="form-control" id="inputIntervalTime" name="inputIntervalTime">
+                </div>
+                <br>
+            <% } %> 
+
             <div class="col-12">
                 <button type="submit" class="btn btn-primary">Register</button>
             </div>

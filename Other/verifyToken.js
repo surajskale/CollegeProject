@@ -1,8 +1,10 @@
 const jwt = require('jsonwebtoken');
 const verifyToken = (req, res, next) => {
     const authToken = req.session.token;
+    console.log(authToken);
     if(authToken == undefined){
-        return res.render('loginPage', {Title: 'Login', role:'user'}); // This doesn't display 'You are logged out message'.
+        req.id = 'loggedout';
+        next();
     }
     if(authToken != undefined) {
         try{
@@ -21,7 +23,6 @@ const verifyToken = (req, res, next) => {
     else{
         req.id = 'loggedout';
     }
-    next();
 }   
 
 module.exports.verifyToken = verifyToken;

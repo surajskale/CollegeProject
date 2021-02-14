@@ -1,0 +1,10 @@
+<title> <%-Title %> </title>
+<% if(confirmed != false) { %> 
+        Your appointment is confirmed at <%- hh %> : <%- mm %>  
+        <br>
+        Thank You !
+<% } else{ %> 
+    <h3>Do you want to confirm this appointment?</h3>
+        <a href="/user/getAppointment/<%- admin_id %>/<%- hh %>/<%- mm %>/confirm"><button type="button" class="btn btn-primary">Confirm</button> 
+        </a>
+<% } %> 

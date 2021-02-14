@@ -15,6 +15,29 @@ const registerValidation  = (dataToValidate) => {
 
     return userSchema.validate(dataToValidate);
 } 
+const registerValidationAdmin  = (dataToValidate) => {
+    const adminSchema = joi.object({
+        Name: joi.string().
+            min(6).
+            required(),
+        Email: joi.string().
+            email().
+            required(),
+        Password: joi.string().
+            min(8).
+            required(),
+        State: joi.string().
+            required(),
+        District: joi.string().
+            required(),
+        Taluka: joi.string().
+            required(),
+        Landmark: joi.string().
+            required(),
+    });
+
+    return adminSchema.validate(dataToValidate);
+} 
 
 const loginValidation = (dataToValidate) => {
     const userSchema = joi.object({
@@ -29,7 +52,7 @@ const loginValidation = (dataToValidate) => {
 
 module.exports.registerValidation = registerValidation;
 module.exports.loginValidation = loginValidation;
-
+module.exports.registerValidationAdmin = registerValidationAdmin;
 
 
 
