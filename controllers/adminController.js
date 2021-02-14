@@ -7,7 +7,7 @@ const { loginValidation, registerValidationAdmin} = require('../Other/validation
 
 
 module.exports.loginPost = async (req, res) =>{
-    if(req.id == 'loggedout'){
+    if(req.admin_id == 'loggedout'){
         return res.redirect('/admin/login/');
     }
     const dataToValidate = {
@@ -37,8 +37,8 @@ module.exports.loginPost = async (req, res) =>{
 };
 
 module.exports.loginGet = (req, res) =>{
-    console.log(req.id);
-    if(req.id == 'loggedout')
+    console.log('loginGet', req.admin_id);
+    if(req.admin_id == 'loggedout')
         res.render('loginPage', {Title: 'Login', role:'admin'});
     else 
         res.redirect('/admin/appointments');
@@ -46,6 +46,9 @@ module.exports.loginGet = (req, res) =>{
 
 module.exports.registerPost = async (req, res) =>{
     console.log(req.body);
+    if(req.admin_id == 'loggedout'){
+        return res.redirect('/admin/login/');
+    }
     try{
         
         const dataToValidate = {
@@ -102,7 +105,7 @@ module.exports.registerPost = async (req, res) =>{
 
 module.exports.registerGet = (req, res) =>{ 
     console.log('This is req.id', req.id);
-    if(req.id == 'loggedout')
+    if(req.admin_id == 'loggedout')
         res.render('registerPage', {Title: 'Register', role:'user'});
     else 
         res.redirect('/admin/appointments');

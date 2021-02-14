@@ -1,8 +1,64 @@
-    <title> ><% Title %>  </title>
-    This is the platform for patients to find doctors in there nearby areas and to get appointment 
-    for their doctor of choice.
-    <h4><a href='/user/login'>Login</h4></a>
-    <footer>
-        <h5><a href = '/admin'>Are u an admin ? </a></h5>
-    </footer>
     
+    <title> <% Title %>  </title>
+
+    <div class="container">
+        <nav class="navbar navbar-dark navColor">
+            <ul class="nav nav-pills">
+                <li class="nav-item ">
+                  <a class="nav-link " href="/user/login"><button class="btn btn-primary button">Login</button></a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="/user/register"><button class="btn btn-primary button">Register</button></a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="/admin"><button class="btn btn-primary button">Admin</button></a>
+                </li>
+            </ul>
+        </nav>
+        <h1>    This is the platform for patients to find doctors in there nearby areas and to get appointment 
+            for their doctor of choice.</h1>
+    </div>
+
+
+
+    <style>
+        .navColor{
+            background-color:  rgb(20, 228, 13);
+        }
+        .button{
+            width: 150px;
+            height: 50px;
+            border: none;
+            color: rgb(245, 250, 247);
+            border-radius: 4px;
+            transition: ease-out 0.3s;
+            font-size: 20px;
+            outline: none;
+            border: 3px solid blue;
+            position: relative;
+            z-index: 1;
+        }
+        .button:hover{
+            color:cornsilk;
+            cursor: pointer;
+        }
+        .button:before{
+            transition: 0.5s all ease;
+            position: absolute;
+            top: 0;
+            left: 50%;
+            right: 50%;
+            bottom: 0;
+            opacity: 0;
+            content: "";
+            background-color: rgb(43, 226, 180);
+        }
+        .button:hover:before{
+            transition: 0.5s all ease;
+            left: 0;
+            right: 0;
+            opacity: 1;
+            z-index: -1;
+        }
+         
+    </style>

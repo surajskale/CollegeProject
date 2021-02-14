@@ -6,7 +6,9 @@ const adminController = require('../controllers/adminController');
 const {verifyTokenAdmin }= require('../Other/verifyTokenAdmin');
 const Appointment = mongoose.model('Appointment');
 const Admin = mongoose.model('Admin');
+const User = mongoose.model('User');
 const cookieSession = require('cookie-session');
+const { object, number } = require('joi');
 router.use(cookieSession({secret: process.env.COOKIE_SECRET_KEY} ));
 
 router.get('/', (req, res) => {
@@ -14,15 +16,28 @@ router.get('/', (req, res) => {
 });
 
 router.get('/appointments', verifyTokenAdmin, async (req, res) => {
+    console.log('admin id', req.admin_id);
+    if(req.admin_id == 'loggedout'){
+        return res.redirect('/admin/login');
+    }
     try{
         const admin_id = req.admin_id;
         console.log(admin_id);
-        const used_appointments = await Appointment.find({admin_id: admin_id}).select('-_id -__v');
+        const used_intervals = await Appointment.find({admin_id: admin_id}).select('-_id -__v');
         const admin = await Admin.findOne({_id: admin_id});
-        console.log(used_appointments);
+
+        var used_intervals_set = new Set();
+
+        used_intervals.forEach(used_interval => {
+            used_intervals_set.add(parseInt(used_interval.start_time));
+        });
+        console.log(used_intervals_set);
         res.render('appointmentsAdmin', {Title: 'Appointments', 
         start_time : admin.start_time,
-        used_appointments: used_appointments});
+        closing_time: admin.closing_time,
+        interval_time: admin.interval_time,
+
+        used_intervals_set: used_intervals_set});
     }catch(e){
         console.log(e);
         res.send('System error. Please try after some time');

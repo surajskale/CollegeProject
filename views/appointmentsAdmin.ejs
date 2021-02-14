@@ -1,3 +1,25 @@
 <title> <%-Title %> </title>
 <%- start_time %> 
-<%- used_appointments %> 
+<%- used_intervals_set %> 
+<br>
+<%/* %> 
+<% used_appointments.forEach(used_appointment => { %> 
+     <p><%- used_appointment.user_id %> </p> 
+     <p><%- used_appointment.admin_id %> </p> 
+     <p><%- used_appointment.start_time %> </p> 
+     <p><%- used_appointment.end_time %> </p> 
+ <% }) %> 
+ <% */%>
+<div class="row g-3">
+    <% for(i=start_time; i<=closing_time; i+=interval_time){ %> 
+        <div class="card" style="width: 18rem;">
+            <div class="card-body">
+                <p>a</p>
+                <% if(used_intervals_set.has(i)) {%> 
+                    <p>occupied</p>
+                <% } %> 
+                <p><%- i %> </p>
+            </div>
+        </div>
+    <% }; %> 
+</div>

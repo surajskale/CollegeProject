@@ -16,6 +16,10 @@ const appointmentSchema = mongoose.Schema({
     end_time: {
         type: 'number', 
         required: true
+    }, 
+    status: {
+        type: 'boolean',
+        required: true
     }
 });
 

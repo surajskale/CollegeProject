@@ -3,9 +3,9 @@ const Admin = require('../models/Admin');
 
 const verifyTokenAdmin = async (req, res, next) => {
     const authToken = req.session.admin_token;
-    console.log(authToken);
+    console.log('authToken', authToken);
     if(authToken == undefined){
-        req.id = 'loggedout';
+        req.admin_id = 'loggedout';
         next();
     }
     if(authToken != undefined) {
@@ -20,16 +20,16 @@ const verifyTokenAdmin = async (req, res, next) => {
             }
             else{
                 req.session.token = '';
-                req.id = 'loggedout';
+                req.admin_id = 'loggedout';
             }
         }catch(err){
             req.session.token = '';
-            req.id = 'loggedout';
+            req.admin_id = 'loggedout';
         }
     }
     else{
         req.session.token = '';
-        req.id = 'loggedout';
+        req.admin_id = 'loggedout';
     }
 }   
 
